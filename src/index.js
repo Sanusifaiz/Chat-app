@@ -76,32 +76,46 @@ io.on('connection', (socket) => {
             return callback('Profanity is not allowed')
         }
         
-
-        
+        try{
         io.to(user.room).emit('message', generateMessage(user.username, emojiStrip(chat)))    // to send to everyone
-        callback()
+        callback()}
+        catch (e){
+            
+        }
     })
 
     socket.on('disconnect', () => {
+       
+       try{
         const user = removeUser(socket.id)
 
-        if(user) {
+           if(user) {
              io.to(user.room).emit('message', generateMessage(Admin, `${user.username} has left!`))  
             io.to(user.room).emit('roomData', {
                 room: user.room,
                 users: getUsersInRoom(user.room)
             })
-            }
+            
+        }
+    }
+    catch (e) {
+
+    }
        
     })
 
     socket.on('location', (coord, callback) => {
 
         const user = getUser(socket.id)
+        
+        try{
         io.to(user.room).emit('location', generateLocationMessage(user.username,`https://google.com/maps?q=${coord.latitude},${coord.longitude}`))
         
         //io.emit('message', 'Location:, '+', coords.latitude, '+', coords.longitude')
-        callback()
+        callback() }
+        catch (e) {
+            
+        }
 
     })
 
