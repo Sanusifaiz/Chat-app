@@ -5,9 +5,13 @@ const socketio = require('socket.io')
 const Filter = require('bad-words')
 const {generateMessage, generateLocationMessage} = require('./utils/messages')
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./utils/user')
-
+const emojiStrip = require('emoji-strip')
 
 const app = express()
+
+
+
+
 const server = http.createServer(app)
 const io =socketio(server)
 
@@ -72,8 +76,9 @@ io.on('connection', (socket) => {
             return callback('Profanity is not allowed')
         }
         
+
         
-        io.to(user.room).emit('message', generateMessage(user.username, chat))    // to send to everyone
+        io.to(user.room).emit('message', generateMessage(user.username, emojiStrip(chat)))    // to send to everyone
         callback()
     })
 

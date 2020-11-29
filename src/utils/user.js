@@ -1,10 +1,11 @@
 const users = [ ]
-
+const emojiStrip = require('emoji-strip')
 // addUser, removeUser, getUser, getUsersInRoom
 
 const addUser = ({id, username, room}) => {
     // Clean the data
-    username = username.trim().toLowerCase()
+    username = emojiStrip(username.trim().toLowerCase())
+    
     room = room.trim().toLowerCase()
 
     // Validate the data
