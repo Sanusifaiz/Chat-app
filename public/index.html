@@ -4,7 +4,7 @@
 
 <head>
     <title>Chat App</title>
-    <link rel="stylesheet" href="/css/styles.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" href="img/favicon.png">
 </head>
 
@@ -12,12 +12,20 @@
    <!-- <h1>CHAT APP</h1> -->
     <div class="centered-form">
         <div class="centered-form__box">
-            <h1>Join</h1>
+            <h1>Chat-App</h1>
             <form action="/chat.html">
-                <label>Display name</label>
+                <label></label>
                 <input type="text" name="username" placeholder="Display name" required>
-                <label>Room</label>
-                <input type="text" name="room" placeholder="Room" required>
+                <!-- <label></label>
+                <input type="text" name="room" placeholder="Room" required> -->
+               <label for="room">Choose a room: </label>
+
+               <select name="room" id="room">
+                <option value="">Select a Room</option>
+                   <option value="Bussiness">Bussiness</option>
+                   <option value="Engineering">Engineering</option>
+                   <option value="Freinds">Hangout</option>
+               </select>
                 <button>Join</button>
             </form>
         </div>

@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
         }
         
         try{
-        io.to(user.room).emit('message', generateMessage(user.username, emojiStrip(chat)))    // to send to everyone
+        io.to(user.room).emit('message', generateMessage(user.username, chat))    // to send to everyone
         callback()}
         catch (e){
             

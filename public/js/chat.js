@@ -71,7 +71,7 @@ socket.on('location', (message, username) => {
 
 socket.on('roomData', ({room, users}) => {
    const html = Mustache.render(sidebarTemplate, {
-        room,
+        room: room.toUpperCase(),
         users
    })
    document.querySelector('#sidebar').innerHTML = html

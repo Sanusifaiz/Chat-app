@@ -6,7 +6,7 @@ const addUser = ({id, username, room}) => {
     // Clean the data
     username = emojiStrip(username.trim().toLowerCase())
     
-    room = room.trim().toLowerCase()
+    room = room.toLowerCase()
 
     // Validate the data
     if (!username || !room) {
@@ -51,6 +51,7 @@ const getUser = (id) => {
 const getUsersInRoom = (room) => {
     room = room.trim().toLowerCase()
     return users.filter((user) => user.room === room)
+  
 }
 
 
@@ -72,10 +73,10 @@ addUser({
     room: 'Programming  '
 })
 
-const User = getUser(223)
+const User = getUser(40)
 console.log(User)
 
-const userList = getUsersInRoom('Programming')
+const userList = getUsersInRoom('Engineering')
 console.log(userList)
 
 
